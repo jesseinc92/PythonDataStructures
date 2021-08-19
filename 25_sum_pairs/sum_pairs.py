@@ -1,3 +1,6 @@
+from os import lstat, readlink
+
+
 def sum_pairs(nums, goal):
     """Return tuple of first pair of nums that sum to goal.
 
@@ -21,3 +24,18 @@ def sum_pairs(nums, goal):
         >>> sum_pairs([11, 20, 4, 2, 1, 5], 100)
         ()
     """
+
+    # get index range, and adjust to leave out the index of the 
+    # last item (since it cannot be the beginning of a tuple)
+
+    # for index in range(len(nums) - 2):
+    #     if nums[index] + nums[index + 1] == goal:
+    #         return (nums[index], nums[index + 1])
+    # return tuple()
+
+    for index_prime in range(len(nums) - 1):
+        for index_secondary in range(len(nums) - 1):
+            if nums[index_prime] + nums[index_secondary] == goal:
+                return (nums[index_prime], nums[index_secondary])
+    
+    return tuple()
