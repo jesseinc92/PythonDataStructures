@@ -1,3 +1,6 @@
+from os import terminal_size
+
+
 def includes(collection, sought, start=None):
     """Is sought in collection, starting at index start?
 
@@ -30,3 +33,33 @@ def includes(collection, sought, start=None):
         >>> includes({"apple": "red", "berry": "blue"}, "blue")
         True
     """
+
+    # first successful attempt
+
+    # if isinstance(collection, list) or isinstance(collection, str) or isinstance(collection, set) or isinstance(collection, tuple):
+    #     if start == None or isinstance(collection, set):
+    #         for val in collection:
+    #             if sought == val:
+    #                 return True
+    #         return False
+    #     else:
+    #         for idx in range(start, len(collection)):
+    #             if sought == collection[idx]:
+    #                 return True
+    #         return False
+
+    # if isinstance(collection, dict):
+    #     for val in collection.values():
+    #         if sought == val:
+    #             return True
+    #     return False
+
+    # second attempt, using solution
+
+    if isinstance(collection, dict):
+        return sought in collection.values()
+
+    if start == None or isinstance(collection, set):
+        return sought in collection
+
+    return sought in collection[start:]
